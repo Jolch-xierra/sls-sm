@@ -5,35 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SLS Sports Career Exploration – Prototype (Pri / Sec / Pre-U)</title>
   <style>
-    /* Colour palette – soft, school-friendly */
     :root {
       --bg-body: #f5f7fb;
       --bg-card: #ffffff;
       --bg-nav: #ffffff;
       --bg-chip: #eef2ff;
       --bg-badge: #e3f2fd;
-
       --border-subtle: #d5d9e2;
       --border-strong: #c0c4d2;
-
       --text-main: #1f2933;
       --text-muted: #6b7280;
       --text-strong: #111827;
       --text-link: #2563eb;
-
-      --accent-primary: #2563eb;  /* blue */
+      --accent-primary: #2563eb;
       --accent-primary-soft: #e0ebff;
-      --accent-secondary: #10b981; /* green */
-
+      --accent-secondary: #10b981;
       --shadow-soft: 0 2px 6px rgba(15, 23, 42, 0.06);
-
       --radius-card: 12px;
       --radius-pill: 999px;
-
       --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    /* Global layout */
     *,
     *::before,
     *::after {
@@ -144,7 +136,7 @@
 
     /* Cards and sections */
     .section-intro {
-      margin-top: 0.5rem;
+      margin-top: 1rem;
       margin-bottom: 1rem;
       color: var(--text-muted);
       font-size: 0.95rem;
@@ -154,9 +146,9 @@
       background-color: var(--bg-card);
       border-radius: var(--radius-card);
       box-shadow: var(--shadow-soft);
-      padding: 1.25rem 1.5rem;
+      padding: 1rem 1.25rem;
       margin-top: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       border: 1px solid var(--border-subtle);
     }
 
@@ -176,23 +168,24 @@
       .card-grid-3 {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
+      .card-grid-5 {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
     }
 
     /* Question and input styling */
     .question {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      padding: 1rem;
+      margin-top: 0.75rem;
+      margin-bottom: 0.75rem;
+      padding: 0.75rem;
       border-radius: 8px;
       border: 1px solid var(--border-subtle);
       background-color: #f9fafb;
     }
 
     .question-label {
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-strong);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
       display: block;
     }
 
@@ -203,30 +196,22 @@
     .options label {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       font-size: 0.9rem;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
       cursor: pointer;
       background: var(--bg-card);
-      padding: 0.4rem 0.6rem;
+      padding: 0.35rem 0.5rem;
       border: 1px solid var(--border-subtle);
       border-radius: 6px;
-      transition: background-color 0.15s;
     }
 
     .options label:hover {
-      background-color: #f3f4f6;
-    }
-
-    .options input[type="radio"],
-    .options input[type="checkbox"] {
-      margin: 0;
+      background-color: #f1f5f9;
     }
 
     textarea,
-    input[type="text"],
-    input[type="email"],
-    input[type="number"] {
+    input[type="text"] {
       width: 100%;
       border-radius: 8px;
       border: 1px solid var(--border-subtle);
@@ -239,7 +224,7 @@
     }
 
     textarea {
-      min-height: 4.5rem;
+      min-height: 4rem;
     }
 
     textarea:focus,
@@ -262,20 +247,19 @@
     }
 
     .values-badges {
-      margin-top: 0.5rem;
-      margin-bottom: 0.75rem;
+      margin: 0.25rem 0 0.5rem;
     }
 
     .values-badge {
       display: inline-block;
-      padding: 0.15rem 0.65rem;
+      padding: 0.15rem 0.6rem;
       border-radius: var(--radius-pill);
       background-color: var(--bg-badge);
       border: 1px solid var(--border-subtle);
       font-size: 0.75rem;
+      margin-right: 0.25rem;
+      margin-bottom: 0.25rem;
       font-weight: 500;
-      margin-right: 0.35rem;
-      margin-bottom: 0.35rem;
     }
 
     .values-badge.care { background-color: #fee2e2; color: #dc2626; border-color: #fecaca; }
@@ -285,26 +269,15 @@
 
     /* Video placeholder */
     .video-placeholder {
-      margin-top: 0.75rem;
-      margin-bottom: 1rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.75rem;
       border-radius: 10px;
       border: 1px dashed var(--border-strong);
       background-color: var(--accent-primary-soft);
       color: var(--text-muted);
-      padding: 1.5rem;
+      padding: 1.2rem;
       text-align: center;
       font-size: 0.9rem;
-      font-weight: 500;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .video-placeholder-icon {
-      font-size: 1.5rem;
-      color: var(--accent-primary);
     }
 
     /* Layout helpers for “columns” */
@@ -340,30 +313,29 @@
 
     .eco-column h4 {
       margin-top: 0;
-      font-size: 0.95rem;
-      font-weight: 600;
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 0.25rem;
       margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      border-bottom: 1px dashed var(--border-subtle);
+      padding-bottom: 0.25rem;
+      color: var(--text-strong);
     }
 
     /* “Draggable” chips (static) */
     .draggable-list {
       margin-top: 0.5rem;
-      background-color: #f1f5f9;
+      background-color: #f8fafc;
       padding: 0.5rem;
       border-radius: 8px;
-      border: 1px solid var(--border-subtle);
+      border: 1px dashed var(--border-strong);
     }
 
     .draggable-item {
       display: inline-block;
       padding: 0.25rem 0.6rem;
       border-radius: var(--radius-pill);
-      border: 1px dashed var(--border-strong);
+      border: 1px dashed var(--border-subtle);
       background-color: #ffffff;
       font-size: 0.8rem;
-      font-weight: 500;
       margin: 0.15rem 0.25rem 0.15rem 0;
       cursor: grab;
     }
@@ -375,7 +347,6 @@
       padding: 0.6rem 0.7rem;
       background-color: #f9fafb;
       font-size: 0.88rem;
-      margin-bottom: 0.5rem;
     }
 
     /* Likert / rating */
@@ -391,16 +362,16 @@
       align-items: center;
       gap: 0.25rem;
       font-size: 0.85rem;
-      background-color: #f9fafb;
+      background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      padding: 0.4rem 0.6rem;
+      padding: 0.25rem 0.5rem;
       border-radius: 6px;
       cursor: pointer;
     }
 
     /* Section separators */
     section {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       padding-top: 0.5rem;
       scroll-margin-top: 70px;
     }
@@ -408,10 +379,9 @@
     hr.section-divider {
       border: none;
       border-top: 1px solid var(--border-subtle);
-      margin: 2rem 0;
+      margin: 3rem 0;
     }
 
-    /* Additional layout structures */
     .checklist-container {
       background-color: #fffbeb;
       border: 1px dashed #f59e0b;
@@ -453,7 +423,7 @@
   <!-- Top navigation -->
   <header class="nav">
     <div class="nav-inner">
-      <div class="nav-title">SLS Sports Career Exploration – Prototype (Pri / Sec / Pre-U)</div>
+      <div class="nav-title">SLS Sports Career Exploration – Prototype</div>
       <div class="nav-links">
         <a href="#upper-primary">Upper Primary</a>
         <a href="#secondary">Secondary</a>
@@ -463,33 +433,31 @@
   </header>
 
   <main>
-    <!-- Section Intro Header -->
-    <div class="card" style="background: linear-gradient(135deg, var(--accent-primary) 0%, #1d4ed8 100%); color: #ffffff; border: none;">
+    <!-- Welcome Header Card -->
+    <div class="card" style="background: linear-gradient(135deg, var(--accent-primary) 0%, #1d4ed8 100%); color: #ffffff; border: none; padding: 1.5rem 1.75rem;">
       <h1 style="color: #ffffff; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">SLS Sports Career Exploration</h1>
       <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; margin-bottom: 0;">
-        This layout acts as an interactive prototype designed to simulate the SLS learning flow across three distinct educational levels. Use the top navigation links to jump between the Primary, Secondary, and Pre-University curriculum screens.
+        This prototype simulates the SLS learning flow across three distinct developmental levels (Upper Primary, Secondary, Pre-University) following a See &rarr; Think &rarr; Feel &rarr; Act pedagogical arc. Use the navigation links above to toggle between standard academic tracks.
       </p>
     </div>
 
     <!-- UPPER PRIMARY SECTION -->
     <section id="upper-primary">
       <h2>Upper Primary – Sports Careers</h2>
-      <div class="section-intro">
-        A simple and fun introduction to people who work in sport, values, and how I can help others.
-      </div>
+      <p class="section-intro">A simple and playful introduction to people who make sport happen, the values they show, and how I can help others.</p>
 
-      <!-- SCREEN 1: Introduction & Hook -->
+      <!-- Screen 1: Introduction & Video Hook -->
       <div class="card">
         <div style="margin-bottom: 0.5rem;">
-          <span class="chip badge-primary">Page 1 – Introduction & Hook</span>
+          <span class="chip badge-primary">Page 1 – Introduction &amp; Hook (See)</span>
         </div>
         <h3>Page 1 – People Who Work in Sport</h3>
-        <p>Today, you will find out more about the Sports Industry in Singapore and explore some of the jobs and skills required within the industry.</p>
+        <p>Today, you will find out more about the Sports Industry in Singapore and explore some of the jobs and skills required within the industry. We will use a mystery format with a Singapore sports clip (e.g. National School Games or Team Singapore highlight) rather than a specific campaign video to see who makes these sports happen.</p>
         <p>You will also think about how people in sport show care, respect, responsibility and perseverance when they help others.</p>
         
         <p><strong>In this lesson, you will practise:</strong></p>
         <ul>
-          <li><strong>Communication & Collaboration</strong> – talking and listening to others.</li>
+          <li><strong>Communication &amp; Collaboration</strong> – talking and listening to others.</li>
           <li><strong>Social and Emotional Skills</strong> – understanding feelings and being a caring friend.</li>
         </ul>
 
@@ -510,8 +478,8 @@
         </div>
 
         <div class="video-placeholder">
-          <span class="video-placeholder-icon">▶</span>
-          <span>SportSG “Together We Play” video here</span>
+          <div style="font-size: 1.5rem; margin-bottom: 0.25rem; color: var(--accent-primary);">▶</div>
+          <div>Singapore sports video here (e.g. local school sports, National School Games, or Team Singapore highlight).</div>
         </div>
 
         <div class="question">
@@ -527,19 +495,19 @@
         <div class="question">
           <span class="question-label">Q2. True or False: Only athletes are important in sport.</span>
           <div class="options">
-            <label><input type="radio" name="p1_q2"> <span>True</span></label>
-            <label><input type="radio" name="p1_q2"> <span>False</span></label>
+            <label><input type="radio" name="up_q2"> <span>True</span></label>
+            <label><input type="radio" name="up_q2"> <span>False</span></label>
           </div>
         </div>
       </div>
 
-      <!-- SCREEN 2: Who Works in Sport? -->
+      <!-- Screen 2: Who Makes Sport Happen? -->
       <div class="card">
         <div style="margin-bottom: 0.5rem;">
-          <span class="chip badge-primary">Page 2 – Explore the Sports Industry</span>
+          <span class="chip badge-primary">Page 2 – Explore the Sports Industry (See + Think)</span>
         </div>
-        <h3>Page 2 – Who Works in Sport?</h3>
-        <p>Many people work on and off the field to make sport happen! They help people stay active, healthy, and happy.</p>
+        <h3>Page 2 – Who Makes Sport Happen?</h3>
+        <p>Many people work on and behind the field to make sport happen! They help people stay active, healthy, and happy.</p>
         
         <p>These workers show important values through their work:</p>
         <div class="values-badges">
@@ -549,7 +517,7 @@
           <span class="values-badge perseverance">Perseverance</span>
         </div>
 
-        <p><strong>Interactive Matcher Layout (Drag &amp; Drop Placeholder):</strong></p>
+        <p style="margin-top: 1rem; font-weight: 600;">Match Roles to Descriptions (Mockup Preview):</p>
         <div class="columns-2">
           <div class="eco-column">
             <h4>Roles (Drag Items)</h4>
@@ -560,43 +528,37 @@
           </div>
           <div class="eco-column">
             <h4>Descriptions (Drop Zones)</h4>
-            <div style="background-color: var(--bg-card); border: 1px dashed var(--border-strong); padding: 0.5rem; margin-bottom: 0.4rem; border-radius: 6px; font-size: 0.85rem;">
-              Plays the sport and trains hard to improve.
-            </div>
-            <div style="background-color: var(--bg-card); border: 1px dashed var(--border-strong); padding: 0.5rem; margin-bottom: 0.4rem; border-radius: 6px; font-size: 0.85rem;">
-              Teaches skills and encourages players.
-            </div>
-            <div style="background-color: var(--bg-card); border: 1px dashed var(--border-strong); padding: 0.5rem; margin-bottom: 0.4rem; border-radius: 6px; font-size: 0.85rem;">
-              Helps injured players feel better and return safely to sport.
-            </div>
-            <div style="background-color: var(--bg-card); border: 1px dashed var(--border-strong); padding: 0.5rem; margin-bottom: 0.4rem; border-radius: 6px; font-size: 0.85rem;">
-              Plans fun events so many people can play together safely.
+            <div class="draggable-list">
+              <span class="draggable-item">Plays the sport and trains hard to improve.</span>
+              <span class="draggable-item">Teaches skills and encourages players.</span>
+              <span class="draggable-item">Helps injured players feel better and return safely to sport.</span>
+              <span class="draggable-item">Plans fun events so many people can play together safely.</span>
             </div>
           </div>
         </div>
 
-        <div class="question">
+        <div class="question" style="margin-top: 1.5rem;">
           <span class="question-label">Q3. Which person mostly helps to plan fun events so many people can play?</span>
           <div class="options">
-            <label><input type="radio" name="p2_q3"> <span>Athlete</span></label>
-            <label><input type="radio" name="p2_q3"> <span>Coach</span></label>
-            <label><input type="radio" name="p2_q3"> <span>Physiotherapist / Sports Doctor</span></label>
-            <label><input type="radio" name="p2_q3"> <span>Event Organiser</span></label>
+            <label><input type="radio" name="up_q3"> <span>Athlete</span></label>
+            <label><input type="radio" name="up_q3"> <span>Coach</span></label>
+            <label><input type="radio" name="up_q3"> <span>Physiotherapist / Sports Doctor</span></label>
+            <label><input type="radio" name="up_q3"> <span>Event Organiser</span></label>
           </div>
         </div>
       </div>
 
-      <!-- SCREEN 3: Why Do People Work in Sport? -->
+      <!-- Screen 3: Why Do People Work in Sport? -->
       <div class="card">
         <div style="margin-bottom: 0.5rem;">
-          <span class="chip badge-primary">Page 3 – Meaning &amp; Jobs/Skills</span>
+          <span class="chip badge-primary">Page 3 – Meaning &amp; Jobs/Skills (Think + Feel)</span>
         </div>
         <h3>Page 3 – Why Do People Work in Sport?</h3>
         <p>People in sport help others grow, feel confident, and work as a team. A good coach demonstrates care, respect, and perseverance daily in their training sessions.</p>
 
-        <div style="background-color: #f9fafb; border-left: 4px solid var(--accent-primary); padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0;">
-          <p style="font-weight: 600; margin-bottom: 0.25rem;">Short Story: Coach A</p>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0;">
+        <div class="snapshot-card" style="border-left: 4px solid var(--accent-primary); margin: 1rem 0;">
+          <strong style="display: block; margin-bottom: 0.25rem;">Short Story: Coach A</strong>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0;">
             Coach A trains the school soccer team. When players make mistakes, Coach A doesn't get angry. Instead, Coach A stops play, explains with care, and encourages them to try again. When a player got injured during a match, Coach A immediately rushed to check on them and guided them safely to the first aid station.
           </p>
         </div>
@@ -604,38 +566,30 @@
         <div class="question">
           <span class="question-label">Q4. What matters MOST to a good coach like Coach A?</span>
           <div class="options">
-            <label><input type="radio" name="p3_q4"> <span>Winning games at all costs</span></label>
-            <label><input type="radio" name="p3_q4"> <span>Showing care, helping players learn, and protecting safety</span></label>
-            <label><input type="radio" name="p3_q4"> <span>Only talking to the strongest players on the team</span></label>
+            <label><input type="radio" name="up_q4"> <span>Winning games at all costs</span></label>
+            <label><input type="radio" name="up_q4"> <span>Showing care, helping players learn, and protecting safety</span></label>
+            <label><input type="radio" name="up_q4"> <span>Only talking to the strongest players on the team</span></label>
           </div>
         </div>
 
         <p>People in sport use social and emotional skills, communication, and collaboration – important 21st Century Competencies.</p>
-        
-        <p><strong>Jobs and Skills Matching Overview:</strong></p>
-        <div>
-          <span class="chip">Active Listening</span>
-          <span class="chip">Coaching &amp; Mentoring</span>
-          <span class="chip">Empathy &amp; Support</span>
-          <span class="chip">Safety Coordination</span>
-        </div>
       </div>
 
-      <!-- SCREEN 4: How Can I Help Others Through Sport? -->
+      <!-- Screen 4: What Lights Me Up? -->
       <div class="card">
         <div style="margin-bottom: 0.5rem;">
-          <span class="chip badge-primary">Page 4 – Reflection &amp; Next Steps</span>
+          <span class="chip badge-primary">Page 4 – Reflection &amp; Next Steps (Feel + Act)</span>
         </div>
         <h3>Page 4 – How Can I Help Others Through Sport?</h3>
-        <p>You can already help others by showing care, respect, responsibility, and perseverance when participating in school activities, PE classes, or recreation.</p>
+        <p>You can already show care, respect, responsibility, and perseverance when participating in school activities, PE classes, or recreation.</p>
 
         <div class="question">
           <span class="question-label">In sport, I want to be someone who...</span>
           <div class="options">
-            <label><input type="radio" name="p4_q5"> <span>Shows CARE by cheering on my teammates and encouraging them</span></label>
-            <label><input type="radio" name="p4_q5"> <span>Shows RESPONSIBILITY by packing up sports equipment safely</span></label>
-            <label><input type="radio" name="p4_q5"> <span>Shows PERSEVERANCE by trying my best even when losing</span></label>
-            <label><input type="radio" name="p4_q5"> <span>Shows RESPECT by listening to the referee and playing fairly</span></label>
+            <label><input type="radio" name="up_q5"> <span>Shows CARE by cheering on my teammates and encouraging them</span></label>
+            <label><input type="radio" name="up_q5"> <span>Shows RESPONSIBILITY by packing up sports equipment safely</span></label>
+            <label><input type="radio" name="up_q5"> <span>Shows PERSEVERANCE by trying my best even when losing</span></label>
+            <label><input type="radio" name="up_q5"> <span>Shows RESPECT by listening to the referee and playing fairly</span></label>
           </div>
         </div>
 
@@ -654,15 +608,13 @@
 
     <!-- SECONDARY SECTION -->
     <section id="secondary">
-      <h2>Secondary – Sports Careers &amp; The Ecosystem</h2>
-      <div class="section-intro">
-        Exploring behind-the-scenes roles, skills and emerging 21st Century Competencies (E21CCs) in the sports industry.
-      </div>
+      <h2>Secondary – Sports Careers and the Sports Ecosystem</h2>
+      <p class="section-intro">Exploring behind-the-scenes roles, the sports ecosystem, and how my values and strengths connect to meaningful work.</p>
 
-      <!-- SCREEN 1: Intro & Hooks -->
+      <!-- Screen 1: Intro & Hooks -->
       <div class="card">
         <div style="margin-bottom: 0.5rem;">
-          <span class="chip badge-primary">Page 1 – Introduction &amp; Hook</span>
+          <span class="chip badge-primary">Page 1 – Introduction &amp; Hook (See)</span>
         </div>
         <h3>Page 1 – Exploring Careers in the Sports Industry</h3>
         <p>Sport is about much more than what happens on the field of play. To support athletic excellence and community health, we rely on a sophisticated industry behind the scenes.</p>
@@ -692,33 +644,33 @@
           </label>
         </div>
 
-        <p><strong>Sports Careers Roles Highlights:</strong></p>
+        <p style="font-weight: 600; margin-bottom: 0.5rem;">Sports Careers Roles Highlights:</p>
         <div class="card-grid card-grid-2">
           <div class="snapshot-card">
-            <strong>📊 Data Analyst</strong><br>
-            Tracks metrics, biomechanical outputs, and helps team-coaches build strategies.
+            <strong>📊 Data Analyst</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0.25rem 0 0 0;">"Someone gets paid to watch every game." Tracks metrics, biomechanical outputs, and helps team-coaches build strategies.</p>
           </div>
           <div class="snapshot-card">
-            <strong>🎟️ Event Operations Executive</strong><br>
-            Coordinates logistics, security, ticketing, and scheduling for local tournaments.
+            <strong>🎟️ Event Operations Executive</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0.25rem 0 0 0;">"The roar of the crowd doesn’t happen by accident." Coordinates logistics, security, ticketing, and scheduling for local tournaments.</p>
           </div>
           <div class="snapshot-card">
-            <strong>👟 Equipment Designer</strong><br>
-            Applies physics and material science to build lighter, safer sports gear.
+            <strong>👟 Equipment Designer</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0.25rem 0 0 0;">"The kit your favourite athlete wears was designed by an engineer." Applies physics and material science to build lighter, safer sports gear.</p>
           </div>
           <div class="snapshot-card">
-            <strong>📸 Media &amp; Content Creator</strong><br>
-            Tells compelling athlete stories and administers communications on web-platforms.
+            <strong>📸 Photographer</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0.25rem 0 0 0;">"Every moment is captured." Tells compelling athlete stories and administers communications on web-platforms.</p>
           </div>
         </div>
 
-        <div class="question">
+        <div class="question" style="margin-top: 1.5rem;">
           <span class="question-label">Q1. Which type of role interests you MOST right now?</span>
           <div class="options">
-            <label><input type="radio" name="s1_q1"> <span>Analytical (Data, Metrics, Research)</span></label>
-            <label><input type="radio" name="s1_q1"> <span>Creative (Design, Marketing, Content Writing)</span></label>
-            <label><input type="radio" name="s1_q1"> <span>Operational (Events, Safety, Management)</span></label>
-            <label><input type="radio" name="s1_q1"> <span>Technical (Product Design, Equipment Engineering)</span></label>
+            <label><input type="radio" name="sec_q1"> <span>Analytical (Data, Metrics, Research)</span></label>
+            <label><input type="radio" name="sec_q1"> <span>Creative (Design, Marketing, Content Writing)</span></label>
+            <label><input type="radio" name="sec_q1"> <span>Operational (Events, Safety, Management)</span></label>
+            <label><input type="radio" name="sec_q1"> <span>Technical (Product Design, Equipment Engineering)</span></label>
           </div>
         </div>
 
@@ -728,31 +680,31 @@
         </div>
       </div>
 
-      <!-- SCREEN 2: Roles Before, During and After -->
+      <!-- Screen 2: Explore the Sports Ecosystem -->
       <div class="card">
         <div style="margin-bottom: 0.5rem;">
-          <span class="chip badge-primary">Page 2 – Explore the Sports Industry</span>
+          <span class="chip badge-primary">Page 2 – Explore the Sports Ecosystem (See + Think)</span>
         </div>
         <h3>Page 2 – Many Roles Before, During and After the Game</h3>
-        <p>A sporting ecosystem requires strategic timing and cooperation. Professionals must display respect, responsibility, and care to ensure everything runs smoothly throughout an event's lifecycle.</p>
+        <p>A sporting ecosystem requires strategic timing and cooperation. Think about a National School Games event or a local match. Many roles work together before, during and after the game. Professionals must display respect, responsibility, and care to ensure everything runs smoothly throughout an event's lifecycle.</p>
 
         <p><strong>Roles to categorise (Draggable Preview):</strong></p>
         <div class="draggable-list">
           <span class="draggable-item">Coach</span>
-          <span class="draggable-item">S&amp;C Trainer</span>
+          <span class="draggable-item">Strength &amp; Conditioning Trainer</span>
           <span class="draggable-item">Sports Psychologist</span>
           <span class="draggable-item">Physiotherapist</span>
           <span class="draggable-item">Performance Analyst</span>
           <span class="draggable-item">Event Manager</span>
           <span class="draggable-item">Announcer/Host</span>
-          <span class="draggable-item">Media Crew</span>
+          <span class="draggable-item">Media / Social Media Crew</span>
         </div>
 
         <div style="margin-top: 1rem; margin-bottom: 1rem;">
           <div class="ecosystem-grid">
             <div class="eco-column">
               <h4>Before the game or event</h4>
-              <p style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">e.g., S&amp;C Trainer, Sports Psychologist</p>
+              <p style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">e.g., Strength &amp; Conditioning Trainer, Sports Psychologist</p>
             </div>
             <div class="eco-column">
               <h4>During the game or event</h4>
@@ -765,24 +717,24 @@
           </div>
         </div>
 
-        <div style="background-color: var(--accent-primary-soft); padding: 0.6rem; border-radius: 8px; font-size: 0.8rem; margin-bottom: 1rem;">
-          💡 <em>Note: Imagine which column each role belongs to; in a real SLS lesson, you would drag-and-drop these.</em>
+        <div style="background-color: var(--accent-primary-soft); padding: 0.6rem; border-radius: 8px; font-size: 0.8rem; margin-bottom: 1rem; border: 1px dashed var(--border-strong);">
+          💡 <em>Note: Imagine which column each role belongs to; in SLS, you would drag-and-drop these.</em>
         </div>
 
         <div class="question">
           <span class="question-label">Q3. Which value is MOST important for people working behind the scenes?</span>
           <div class="options">
-            <label><input type="radio" name="s2_q3"> <span>Respect for different roles and understanding that every single function is essential</span></label>
-            <label><input type="radio" name="s2_q3"> <span>Only caring about and helping famous elite athletes</span></label>
-            <label><input type="radio" name="s2_q3"> <span>Ignoring safety rules to get the event finished earlier</span></label>
+            <label><input type="radio" name="sec_q3"> <span>Respect for different roles and understanding that every single function is essential</span></label>
+            <label><input type="radio" name="sec_q3"> <span>Only caring about and helping famous elite athletes</span></label>
+            <label><input type="radio" name="sec_q3"> <span>Ignoring safety rules to get the event finished earlier</span></label>
           </div>
         </div>
       </div>
 
-      <!-- SCREEN 3: Meaning & Jobs/Skills -->
+      <!-- Screen 3: Meaning at Work & Jobs/Skills -->
       <div class="card">
         <div style="margin-bottom: 0.5rem;">
-          <span class="chip badge-primary">Page 3 – Meaning &amp; Jobs/Skills</span>
+          <span class="chip badge-primary">Page 3 – Meaning &amp; Jobs/Skills (Feel + Think)</span>
         </div>
         <h3>Page 3 – What Gives People Meaning in Sports Work?</h3>
         <p>Finding purpose in sport careers comes from contributing to community wellness, encouraging inclusion, and solving complex challenges.</p>
@@ -791,15 +743,15 @@
           <!-- Column 1: Roles Snapshots -->
           <div>
             <p><strong>Click to Profile a Role:</strong></p>
-            <div class="snapshot-card" style="border-left: 3px solid var(--accent-primary); cursor: pointer; background-color: var(--accent-primary-soft);">
+            <div class="snapshot-card" style="border-left: 3px solid var(--accent-primary); cursor: pointer; background-color: var(--accent-primary-soft); margin-bottom: 0.5rem;">
               <strong>Sports Business Consultant</strong><br>
               <span style="font-size: 0.8rem; color: var(--text-muted);">Advises associations, builds sports sponsorships, and handles marketing.</span>
             </div>
-            <div class="snapshot-card" style="cursor: pointer;">
+            <div class="snapshot-card" style="cursor: pointer; margin-bottom: 0.5rem;">
               <strong>Sports Equipment / Fitness Corner Designer</strong><br>
               <span style="font-size: 0.8rem; color: var(--text-muted);">Designs physical playgrounds, gym setups, and inclusive gear for elderly/youth.</span>
             </div>
-            <div class="snapshot-card" style="cursor: pointer;">
+            <div class="snapshot-card" style="cursor: pointer; margin-bottom: 0.5rem;">
               <strong>Sports Photographer</strong><br>
               <span style="font-size: 0.8rem; color: var(--text-muted);">Captures historical sporting highlights, edits publications, and manages media.</span>
             </div>
@@ -846,35 +798,37 @@
         </div>
       </div>
 
-      <!-- SCREEN 4: My Strengths, E21CC & Next Step -->
+      <!-- Screen 4: E21CC Choice & Next Step -->
       <div class="card">
         <div style="margin-bottom: 0.5rem;">
-          <span class="chip badge-primary">Page 4 – Reflection &amp; Next Steps</span>
+          <span class="chip badge-primary">Page 4 – Reflection &amp; Next Steps (Act)</span>
         </div>
         <h3>Page 4 – My Strengths, E21CCs and Next Steps</h3>
         <p>A career journey is iterative. Preparing today by building robust E21CCs opens doors to a vast range of industries inside and outside the athletic sphere.</p>
 
         <div class="question">
-          <span class="question-label">Q7a. Identify ONE field or cluster in sports that matches your personal interests.</span>
+          <span class="question-label">Q7a. One sports-related field or cluster that interests me is...</span>
           <textarea placeholder="e.g., Sports Technology, Allied Health, Sports Management..."></textarea>
         </div>
 
         <div class="question">
-          <span class="question-label">Q7b. Why does this match your personality and values?</span>
+          <span class="question-label">Q7b. Why does this field or cluster interest me?</span>
           <textarea placeholder="e.g., I enjoy analytical problem-solving and want to help athletes stay injury-free..."></textarea>
         </div>
 
         <div class="question">
-          <span class="question-label">Q8. Which E21CC do you want to develop most to get ready for this?</span>
+          <span class="question-label">Q8. One Emerging 21st Century Competency (E21CC) I would like to develop more for this field is...</span>
           <div class="options">
-            <label><input type="radio" name="s4_q8"> <span>Critical &amp; Inventive Thinking (to design solutions for athletes)</span></label>
-            <label><input type="radio" name="s4_q8"> <span>Communication &amp; Collaboration (to work well in multi-disciplinary teams)</span></label>
-            <label><input type="radio" name="s4_q8"> <span>Adaptive &amp; Self-directed Learning (to quickly master new sports science technologies)</span></label>
+            <label><input type="radio" name="sec_q8"> <span>Information Skills</span></label>
+            <label><input type="radio" name="sec_q8"> <span>Communication &amp; Collaboration</span></label>
+            <label><input type="radio" name="sec_q8"> <span>Critical &amp; Inventive Thinking</span></label>
+            <label><input type="radio" name="sec_q8"> <span>Adaptive Thinking</span></label>
+            <label><input type="radio" name="sec_q8"> <span>Civic Literacy / Care for Community</span></label>
           </div>
         </div>
 
         <div class="question">
-          <span class="question-label">Q9. What is ONE practical thing you can do THIS YEAR to develop this E21CC?</span>
+          <span class="question-label">Q9. One thing I can do THIS YEAR to develop this E21CC is...</span>
           <textarea placeholder="e.g., Organise our class's inter-house games, or lead a presentation in science class..."></textarea>
         </div>
 
@@ -902,17 +856,16 @@
     <!-- PRE-UNIVERSITY SECTION -->
     <section id="preu">
       <h2>Pre-University – Designing My Sports-Related Pathway</h2>
-      <div class="section-intro">
-        Connecting personal values, strengths, structural sports industry clusters, and post-secondary pathways in Singapore.
-      </div>
+      <p class="section-intro">Connecting my values and strengths to sports clusters, future roles, and concrete post-secondary pathways.</p>
 
-      <!-- SCREEN 1: Intro & Cluster Overview -->
+      <!-- Screen 1: Intro & Cluster Overview -->
       <div class="card">
         <div style="margin-bottom: 0.5rem;">
-          <span class="chip badge-primary">Page 1 – Introduction &amp; Hook</span>
+          <span class="chip badge-primary">Page 1 – Introduction &amp; Hook (See)</span>
         </div>
         <h3>Page 1 – Designing My Sports-Related Pathway</h3>
         <p>Pre-University is a critical junction. Navigating the athletic landscape at an advanced level means mapping professional accreditation boards, industry pillars, and advanced tertiary programs.</p>
+        <p>In this lesson, you will draw heavily upon your <strong>Critical &amp; Inventive Thinking</strong>, <strong>Information &amp; Communication Skills</strong>, and <strong>Civic Literacy</strong>.</p>
 
         <div class="checklist-container">
           <div class="checklist-title">Pre-U Learning Goals Checklist:</div>
@@ -931,7 +884,7 @@
         </div>
 
         <p><strong>The Five Core Sports Clusters in Singapore:</strong></p>
-        <div class="card-grid card-grid-3" style="margin-bottom: 1rem;">
+        <div class="card-grid card-grid-2" style="margin-bottom: 1rem;">
           <div class="snapshot-card" style="border-top: 3px solid var(--accent-primary);">
             <strong>1. High-Performance &amp; Sports Science</strong>
             <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Biomechanics, physiology, video analysis, coaching pedagogy.</p>
@@ -948,7 +901,7 @@
             <strong>4. Sports Media, Communications &amp; Technology</strong>
             <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Journalism, broadcasting, wearable tech development.</p>
           </div>
-          <div class="snapshot-card" style="border-top: 3px solid var(--accent-primary);">
+          <div class="snapshot-card" style="border-top: 3px solid var(--accent-primary); grid-column: span 1;">
             <strong>5. Education, Coaching &amp; Community Development</strong>
             <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">ActiveSG managers, PE teachers, fitness instructors.</p>
           </div>
@@ -973,33 +926,37 @@
         </div>
       </div>
 
-      <!-- SCREEN 2: Values, Communities & Cluster Choice -->
+      <!-- Screen 2: Values, Communities & Cluster Choice -->
       <div class="card">
         <div style="margin-bottom: 0.5rem;">
-          <span class="chip badge-primary">Page 2 – Explore the Sports Industry</span>
+          <span class="chip badge-primary">Page 2 – Values, Strengths &amp; Cluster Choice (Think + Feel)</span>
         </div>
         <h3>Page 2 – Values, Strengths &amp; Cluster Choice</h3>
         <p>A resilient career path is constructed at the intersection of your core personal values, target populations you wish to assist, and academic strengths.</p>
 
         <div class="columns-2">
           <div class="eco-column" style="background-color: #faf5ff;">
-            <h4 style="color: #6b21a8; border-color: #e9d5ff;">Values Checkbox Bank</h4>
-            <label class="checklist-item"><input type="checkbox"> <span><strong>Innovation:</strong> inventing new protocols</span></label>
-            <label class="checklist-item"><input type="checkbox"> <span><strong>Compassion:</strong> supporting rehabilitation</span></label>
-            <label class="checklist-item"><input type="checkbox"> <span><strong>Excellence:</strong> achieving elite victory</span></label>
-            <label class="checklist-item"><input type="checkbox"> <span><strong>Inclusivity:</strong> enabling sports for all</span></label>
+            <h4 style="color: #6b21a8; border-color: #e9d5ff;">Values important to me</h4>
+            <label class="checklist-item"><input type="checkbox"> <span>Helping others grow</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>Achievement &amp; Competition</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>Creativity &amp; Design</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>Stability &amp; Structure</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>Community impact</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>Big projects &amp; Logistics</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>Problem-solving</span></label>
           </div>
 
           <div class="eco-column" style="background-color: #f0fdf4;">
-            <h4 style="color: #166534; border-color: #bbf7d0;">Communities Checkbox Bank</h4>
-            <label class="checklist-item"><input type="checkbox"> <span>National Teams &amp; Olympians</span></label>
-            <label class="checklist-item"><input type="checkbox"> <span>Recovering patients &amp; Elderly citizens</span></label>
-            <label class="checklist-item"><input type="checkbox"> <span>School-going youth &amp; Grassroots players</span></label>
-            <label class="checklist-item"><input type="checkbox"> <span>Corporate stakeholders &amp; Sponsors</span></label>
+            <h4 style="color: #166534; border-color: #bbf7d0;">Communities I care about</h4>
+            <label class="checklist-item"><input type="checkbox"> <span>Children &amp; Youth</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>High-performance athletes</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>Older adults</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>Persons with disabilities</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>General public</span></label>
           </div>
         </div>
 
-        <div class="question">
+        <div class="question" style="margin-top: 1.5rem;">
           <span class="question-label">Which cluster are you MOST interested in exploring?</span>
           <div class="options">
             <label><input type="radio" name="pu_q3"> <span>Cluster 1: High-Performance &amp; Sports Science</span></label>
@@ -1016,36 +973,36 @@
         </div>
       </div>
 
-      <!-- SCREEN 3: Roles, Skills & Courses -->
+      <!-- Screen 3: Roles, Skills & Courses in My Cluster -->
       <div class="card">
         <div style="margin-bottom: 0.5rem;">
-          <span class="chip badge-primary">Page 3 – Meaning &amp; Jobs/Skills</span>
+          <span class="chip badge-primary">Page 3 – Roles, Skills and Courses (Think)</span>
         </div>
         <h3>Page 3 – Roles, Skills and Courses in My Chosen Cluster</h3>
         <p>A rigorous professional outline map requires specific, evidence-backed vocational pathways. Research entry requirements and degree prerequisites in Singapore's tertiary landscape.</p>
 
-        <!-- Custom Role Analysis Form -->
+        <!-- Role 1 Analysis Profile -->
         <div style="background-color: #f9fafb; border: 1px solid var(--border-subtle); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-          <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--accent-primary);">📋 Custom Role Analysis Profile</p>
+          <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--accent-primary);">📋 Custom Role Analysis Profile (Role 1)</p>
           
           <div class="columns-2">
             <div>
-              <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Target Role Name</span>
+              <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Q7a. Target Role Name</span>
               <input type="text" placeholder="e.g. Physiotherapist">
             </div>
             <div>
-              <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Key Daily Tasks</span>
-              <input type="text" placeholder="e.g. Patient assessment, building workout regimes">
+              <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Q7b. Key Daily Tasks</span>
+              <input type="text" placeholder="e.g. Assessment of joint pains, post-surgery rehabilitation workouts">
             </div>
           </div>
 
           <div class="columns-2" style="margin-top: 0.75rem;">
             <div>
-              <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Technical Skills / Qualifications</span>
-              <input type="text" placeholder="e.g. Allied Health Professions Council (AHPC) license">
+              <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Q7c. Technical Skills / Qualifications</span>
+              <input type="text" placeholder="e.g. Allied Health Professions Council (AHPC) registration, clinical degree">
             </div>
             <div>
-              <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">E21CCs Needed</span>
+              <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Q7d. E21CCs Needed</span>
               <div class="options" style="margin-top: 0.15rem;">
                 <label style="padding: 0.2rem; margin-bottom: 0.2rem; font-size: 0.8rem;"><input type="checkbox"> <span>Information Skills</span></label>
                 <label style="padding: 0.2rem; margin-bottom: 0.2rem; font-size: 0.8rem;"><input type="checkbox"> <span>Critical Thinking</span></label>
@@ -1054,90 +1011,103 @@
           </div>
         </div>
 
-        <!-- Custom Course Research Tracker -->
+        <!-- Optional Role 2 Analysis -->
+        <div style="background-color: #f9fafb; border: 1px solid var(--border-subtle); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+          <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text-muted);">📋 Optional: Second Role Profile (Q8)</p>
+          <div class="columns-2">
+            <div>
+              <input type="text" placeholder="Target Role Name (Optional)">
+            </div>
+            <div>
+              <input type="text" placeholder="Key Daily Tasks (Optional)">
+            </div>
+          </div>
+        </div>
+
+        <!-- Q9 Course Research -->
         <div style="background-color: #f9fafb; border: 1px solid var(--border-subtle); padding: 1rem; border-radius: 8px;">
-          <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--accent-secondary);">🎓 Tertiary Course Research Tracker</p>
+          <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--accent-secondary);">🎓 Q9. Tertiary Course Research Tracker</p>
           
           <div class="columns-2">
             <div>
-              <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Course Name / Degree Program</span>
+              <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Course Name</span>
               <input type="text" placeholder="e.g. BSc (Hons) in Physiotherapy">
             </div>
             <div>
-              <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Tertiary Institution</span>
+              <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Institution</span>
               <input type="text" placeholder="e.g. Singapore Institute of Technology (SIT)">
             </div>
           </div>
 
           <div style="margin-top: 0.75rem;">
-            <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Why does this specific course interest me?</span>
-            <textarea placeholder="e.g. Focus on clinical experience, proximity, and recognition by the Singapore Ministry of Health..."></textarea>
+            <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Why does this course interest me?</span>
+            <textarea placeholder="Describe how this course fulfills academic and registration guidelines..."></textarea>
           </div>
         </div>
 
         <div style="background-color: var(--accent-primary-soft); padding: 0.75rem; border-radius: 8px; font-size: 0.85rem; margin-top: 1rem; color: var(--text-strong);">
-          💡 <strong>Note:</strong> Conducting clinical-license searches and course prerequisite investigations employs critical <strong>Information and Communication Skills</strong>.
+          💡 <strong>Note:</strong> Use your information and communication skills to research courses and pathways.
         </div>
       </div>
 
-      <!-- SCREEN 4: Emerging Direction & Next Steps -->
+      <!-- Screen 4: Emerging Direction & Next Steps -->
       <div class="card">
         <div style="margin-bottom: 0.5rem;">
-          <span class="chip badge-primary">Page 4 – Reflection &amp; Next Steps</span>
+          <span class="chip badge-primary">Page 4 – Emerging Pathway Roadmap (Feel + Act)</span>
         </div>
         <h3>Page 4 – My Emerging Direction and Next Steps</h3>
-        <p>Developing a solid ECG (Education &amp; Career Guidance) gameplan involves committing to near-term actions that clear doubts and construct professional networks.</p>
+        <p>Purpose functions as a key compass in navigating an ever-evolving sports industry. Consolidate your core actions below.</p>
 
         <div class="question">
-          <span class="question-label">A sports-related cluster or role area I might pursue</span>
-          <textarea placeholder="Type your targeted roles or industry areas..."></textarea>
+          <span class="question-label">A sports-related cluster or role area I might pursue is...</span>
+          <textarea placeholder="e.g., Clinical Sports Therapy or Community Health Administration..."></textarea>
         </div>
 
         <div class="question">
-          <span class="question-label">Why it fits my values and E21CC strengths</span>
-          <textarea placeholder="Analyse how this aligns with your unique profile..."></textarea>
+          <span class="question-label">This seems to fit my values and E21CC strengths because...</span>
+          <textarea placeholder="Reflect on your character profiles and course mappings..."></textarea>
         </div>
 
         <div class="question">
-          <span class="question-label">Questions I still have (e.g. regarding certifications, career progression)</span>
-          <textarea placeholder="Type what you want to consult with your ECG counselor about..."></textarea>
+          <span class="question-label">Questions I still have about this area are...</span>
+          <textarea placeholder="List core uncertainties or professional steps you still want to clarify..."></textarea>
         </div>
 
-        <!-- Checkbox Action List -->
+        <!-- Checklist -->
         <div class="checklist-container" style="background-color: #f0fdf4; border-color: #86efac;">
-          <div class="checklist-title" style="color: #166534;">🎯 Action Roadmap: My Next 1–2 Years</div>
+          <div class="checklist-title" style="color: #166534;">In the next 1–2 years, I plan to:</div>
           <label class="checklist-item">
             <input type="checkbox">
-            <span>Book a session with my school Education &amp; Career Guidance (ECG) counsellor</span>
+            <span>Talk to my school ECG (Education and Career Guidance) counsellor</span>
           </label>
           <label class="checklist-item">
             <input type="checkbox">
-            <span>Secure a job shadowing, volunteering stint or attachment at a sports clinic or gym</span>
+            <span>Look for an internship, attachment, or volunteering stint with local teams</span>
           </label>
           <label class="checklist-item">
             <input type="checkbox">
-            <span>Choose a relevant school project topic (e.g., Science Fair or Research project) based on Sport &amp; Wellness</span>
+            <span>Lead a project related to wellness/sports day coordination in my campus</span>
           </label>
           <label class="checklist-item">
             <input type="checkbox">
-            <span>Attend university/polytechnic Open Houses to meet course chairs and seniors</span>
+            <span>Attend university open houses and engage program coordinators</span>
           </label>
           <label class="checklist-item">
             <input type="checkbox">
-            <span>Enrol in online intro modules on sports physiology, anatomy, or event operations</span>
+            <span>Explore online introductory resources, registers, and publications</span>
           </label>
         </div>
 
         <div class="question" style="border-color: var(--accent-secondary);">
-          <span class="question-label" style="color: #047857;">🔥 Concrete Next Step</span>
+          <span class="question-label" style="color: #047857;">🔥 Concrete Action Pledge</span>
           <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.4rem;">One concrete step I will take in the next 3–12 months is...</p>
-          <textarea placeholder="Type your concrete action plan commitment..."></textarea>
+          <textarea placeholder="Describe your step precisely (e.g. book and confirm Open House dates by September...)"></textarea>
         </div>
 
-        <!-- Evaluation -->
+        <!-- Feedback Section -->
         <div style="border-top: 1px solid var(--border-subtle); padding-top: 1rem; margin-top: 1.5rem;">
           <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem;">Pre-University Module Review</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Rate your readiness in planning your future career direction:</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Rate your confidence level in mapping sports career pathways:</p>
           <div class="likert-row">
             <label class="likert-option"><input type="radio" name="preu_likert"> <span>Not ready at all</span></label>
             <label class="likert-option"><input type="radio" name="preu_likert"> <span>Slightly clearer</span></label>
@@ -1146,8 +1116,8 @@
           </div>
 
           <div style="margin-top: 1rem;">
-            <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Feedback &amp; Ideas:</span>
-            <textarea style="min-height: 3rem;" placeholder="Any ideas on how to improve this pre-university transition support?"></textarea>
+            <span class="question-label" style="font-size: 0.85rem; margin-bottom: 0.2rem;">Feedback / Core Ideas:</span>
+            <textarea style="min-height: 3rem;" placeholder="Any ideas on how we can improve this pre-university pathway lesson?"></textarea>
           </div>
         </div>
       </div>
